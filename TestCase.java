@@ -2,19 +2,9 @@ public class TestCase {
 
     public static void main(String[] args) {
 
-        Dispatcher dispatcher = new Dispatcher();
-
-        Customer User1 = new Customer("Bob");
-
-        Customer User2 = new Customer("Sean");
-
         Movie Spiderman = new Movie("Spiderman", 0);
         Movie Ironman = new Movie("Ironman", 1);
         Movie Superman = new Movie("Superman", 1);
-
-        Rental cost1 = new Rental(Spiderman, 2);
-        Rental cost2 = new Rental(Ironman, 10);
-        Rental cost3 = new Rental(Superman, 10);
 
         Interceptor interceptor = new Interceptor() {
             public void rentalAdded(ContextObject contextObject) {
@@ -24,7 +14,17 @@ public class TestCase {
             }
         };
 
+        Dispatcher dispatcher = new Dispatcher();
+
         dispatcher.register(interceptor);
+
+        Customer User1 = new Customer("Bob");
+
+        Customer User2 = new Customer("Sean");
+
+        Rental cost1 = new Rental(Spiderman, 2);
+        Rental cost2 = new Rental(Ironman, 10);
+        Rental cost3 = new Rental(Superman, 10);
 
         User1.addRental(cost1);
         ContextObject contextObject1 = new ContextObject(User1, cost1);
