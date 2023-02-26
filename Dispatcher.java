@@ -8,7 +8,7 @@ public class Dispatcher {
         interceptors = new ArrayList<Interceptor>();
     }
 
-    public void dispatch(ContextObject contextObject) {
+    public void rentalAdded(ContextObject contextObject) {
         for (Interceptor interceptor : interceptors) {
             interceptor.rentalAdded(contextObject);
         }
